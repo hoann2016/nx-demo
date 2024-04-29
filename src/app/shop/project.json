@@ -1,23 +1,23 @@
 {
-  "name": "ws",
-  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "name": "shop",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "./src",
+  "sourceRoot": "src/app/shop/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/ws",
-        "index": "./src/index.html",
-        "browser": "./src/main.ts",
+        "outputPath": "dist/src/app/shop",
+        "index": "src/app/shop/src/index.html",
+        "browser": "src/app/shop/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "./tsconfig.app.json",
+        "tsConfig": "src/app/shop/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": ["./src/styles.scss"],
+        "assets": ["src/app/shop/src/favicon.ico", "src/app/shop/src/assets"],
+        "styles": ["src/app/shop/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -48,10 +48,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "ws:build:production"
+          "buildTarget": "shop:build:production"
         },
         "development": {
-          "buildTarget": "ws:build:development"
+          "buildTarget": "shop:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -59,28 +59,25 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "ws:build"
+        "buildTarget": "shop:build"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["./src"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "jest.config.app.ts"
+        "jestConfig": "src/app/shop/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "ws:build",
+        "buildTarget": "shop:build",
         "port": 4200,
-        "staticFilePath": "dist/ws/browser",
+        "staticFilePath": "dist/src/app/shop/browser",
         "spa": true
       }
     }
