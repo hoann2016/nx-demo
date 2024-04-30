@@ -3,8 +3,9 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: '',
-    component: NxWelcomeComponent,
+    path: 'checkout-remote',
+    loadChildren: () =>
+      import('checkout-remote/Routes').then((m) => m.remoteRoutes),
   },
   {
     path: 'product',
@@ -15,9 +16,9 @@ export const appRoutes: Route[] = [
     path: 'orders',
     loadComponent: () => import('@ws/orders').then((m) => m.OrdersComponent),
   },
-  {
-    path: 'checkout',
-    loadComponent: () =>
-      import('@ws/checkout').then((m) => m.CheckoutComponent),
-  },
+  // {
+  //   path: 'checkout',
+  //   loadComponent: () =>
+  //     import('@ws/checkout').then((m) => m.CheckoutComponent),
+  // },
 ];
